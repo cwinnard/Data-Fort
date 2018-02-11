@@ -1,0 +1,49 @@
+CREATE SCHEMA master;
+
+CREATE TABLE master.user (
+id SERIAL NOT NULL PRIMARY KEY,
+user_name VARCHAR(100) NOT NULL,
+name_first VARCHAR(100) NOT NULL,
+name_last VARCHAR(100) NOT NULL,
+email VARCHAR(100) NOT NULL,
+password VARCHAR(100) NOT NULL
+);
+
+CREATE SCHEMA growing;
+
+CREATE TABLE growing.plant (
+id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+id_user INT NOT NULL REFERENCES master.user(id)
+ts_start TIMESTAMP NOT NULL,
+ts_end TIMESTAMP
+);
+
+CREATE SCHEMA notebook;
+
+CREATE TABLE notebook.read_type (
+id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+description VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE notebook.reading (
+id SERIAL NOT NULL PRIMARY KEY,
+id_plant INT NOT NULL REFERENCES growing.plant(id),
+date TIMESTAMP NOT NULL,
+id_read_type INT NOT NULL REFERENCES notebook.read_type(id),
+value VARCHAR(100) NOT NULL,
+id_taker INT NOT NULL REFERENCES master.user(id)
+);
+
+INSERT INTO master.user
+VALUES(DEFAULT, 'test_user', 'test', 'user', 'email@email.com', 'password');
+
+INSERT INTO notebook.read_type
+VALUES(DEFAULT, 'test_name', 'test_description');
+
+INSERT INTO growing.plant
+VALUES(DEFAULT, '1', 'plant name 1', '2018-01-01 01:01:01');
+
+INSERT INTO growing.plant
+VALUES(DEFAULT, '1', 'plant name 2', '2018-02-02 01:01:01');

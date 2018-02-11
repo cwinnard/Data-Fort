@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Blueprint, jsonify, render_template, request
+from flask import Blueprint, current_user, jsonify, render_template, request
 
 from growflask import db
 from psql.schema.growing import Plant
@@ -13,7 +13,7 @@ def dashboard():
 
 @dashboardBP.route('/reading')
 def reading():
-	return render_template('reading.html')
+    return render_template('reading.html')
 
 @dashboardBP.route('/reading/add')
 def take_reading():

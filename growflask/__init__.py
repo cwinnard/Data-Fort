@@ -12,6 +12,8 @@ db = SQLAlchemy(app)
 
 from growflask.dashboard.controller import dashboardBP
 app.register_blueprint(dashboardBP)
+from growflask.login.controller import loginBP
+app.register_blueprint(loginBP)
 
 @app.route('/')
 def index():

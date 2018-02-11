@@ -1,4 +1,4 @@
-import time
+from time import strftime
 
 from growflask import db
 
@@ -19,11 +19,11 @@ class Plant(db.Model):
 
     @property
     def plant_date(self):
-        return time.ctime(int(self.ts_start))
+        return self.ts_start.strftime('%b %d %Y')
 
     def serialize(self):
         return {
             'name': self.name, 
             'owner': self.user.user_name,
-            'planted_on': self.ts_start,
+            'planted_on': self.plant_date,
         }

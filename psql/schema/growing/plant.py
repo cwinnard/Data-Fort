@@ -20,3 +20,10 @@ class Plant(db.Model):
     @property
     def plant_date(self):
         return time.ctime(int(self.ts_start))
+
+    def serialize(self):
+        return {
+            'name': self.name, 
+            'owner': self.user.user_name,
+            'planted_on': self.ts_start,
+        }

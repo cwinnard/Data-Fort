@@ -1,7 +1,8 @@
 from datetime import datetime
-from flask import Blueprint, render_template, request
+from flask import Blueprint, jsonify, render_template, request
 
 from growflask import db
+from psql.schema.growing import Plant
 from psql.schema.notebook import Reading
 
 dashboardBP = Blueprint('dashboard', __name__, template_folder='templates', url_prefix='/dashboard')
@@ -30,3 +31,8 @@ def take_reading():
     db.session.commit()
 
     return render_template('reading.html')
+
+@dashboardBP.route('/plants')
+def plants():
+    plants = Plant.query.filter_by(id_user=1).all()
+    return render_template('plants.html', plants=plants)

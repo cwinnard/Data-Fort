@@ -4,6 +4,7 @@ from growflask import db
 class User(db.Model):
     """Represents a person"""
 
+    __table_args__ = {'schema': 'master'}
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)

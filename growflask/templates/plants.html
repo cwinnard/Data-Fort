@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h2>Plants</h2>
+		{% for plant in plants %}
+        	<strong>Plant name: </strong>{{ plant.name }}</br>
+        	<strong>Owner: </strong>{{ plant.user.user_name }}</br>
+        	<strong>Planted on: </strong>{{ plant.ts_start }}</br>
+            </br>
+		{% endfor %}
+	</body>
+</html>

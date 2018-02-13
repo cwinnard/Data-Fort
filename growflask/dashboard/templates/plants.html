@@ -8,5 +8,16 @@
         	<strong>Planted on: </strong>{{ plant.ts_start }}</br>
             </br>
 		{% endfor %}
+
+		<h3>Add Plant</h3>
+		<form action="/plant/add">
+		  Plant Name:<br>
+		  <input type="text" name="name">
+		  <br>
+		  Planted On:<br>
+		  <input type="date" name="planted_on">
+		  <br><br>
+		  <input type="submit" value="Submit">
+		</form> 
 	</body>
 </html>

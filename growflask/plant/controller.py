@@ -1,5 +1,8 @@
-from flask import Blueprint, jsonify, render_template, request
+from datetime import datetime
+from flask import Blueprint, jsonify, redirect, render_template, request, url_for
 #from flask_login import current_user
+
+from growflask import db
 
 from psql.schema.growing import Plant
 
@@ -11,7 +14,19 @@ def plant():
 
 @plantBP.route('/add')
 def add_plant():
-    return 'hello plant'    
+    name = request.args.get('name')
+    planted_on = request.args.get('planted_on')
+    plant_date = datetime.strptime(planted_on, '%Y-%m-%d')
+
+    plant = Plant()
+    plant.id_user = 1
+    plant.name = name
+    plant.ts_start = plant_date
+
+    db.session.add(plant)
+    db.session.commit()
+
+    return redirect(url_for('dashboard.plants'))   
 
 @plantBP.route('/<int:plantId>/details')
 def plant_details(plantId):

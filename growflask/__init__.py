@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-#Why isnt this working?!
-#from flask_login import LoginManager
+from flask_login import login_manager
 
 import config
 
@@ -10,7 +9,17 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
+#Need work on login
+"""
+loginManager = login_manager.LoginManager()
 
+from psql.schema.master import User
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
+
+loginManager.init_app(app)
+"""
 from growflask.dashboard.controller import dashboardBP
 app.register_blueprint(dashboardBP)
 from growflask.login.controller import loginBP

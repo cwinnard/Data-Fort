@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Blueprint, jsonify, render_template, request
-#from flask_login import current_user
+from flask_login import current_user
 
 from growflask import db
 from psql.schema.growing import Plant
@@ -10,7 +10,7 @@ dashboardBP = Blueprint('dashboard', __name__, template_folder='templates', url_
 
 @dashboardBP.route('/')
 def dashboard():
-    return 'hello dashboard'
+    return render_template('dashboard.html')
 
 @dashboardBP.route('/reading')
 def reading():

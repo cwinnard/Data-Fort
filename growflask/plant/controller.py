@@ -16,7 +16,7 @@ def plant():
 def add_plant():
     name = request.args.get('name')
     planted_on = request.args.get('planted_on')
-    plant_date = datetime.strptime(planted_on, '%Y-%m-%d')
+    plant_date = datetime.strptime(planted_on, '%Y-%m-%dT%H:%M')
 
     plant = Plant()
     plant.id_user = 1

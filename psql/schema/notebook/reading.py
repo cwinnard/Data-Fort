@@ -17,4 +17,4 @@ class Reading(db.Model):
     value = db.Column(db.String(128), nullable=False)
     id_taker = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
-    read_type = db.relationship('ReadType', backref='user', lazy='joined')
+    read_type = db.relationship('ReadType', lazy='joined')

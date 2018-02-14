@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		{% for read_type in read_types %}
+        	<strong>Name: </strong>{{ read_type.name }}</br>
+        	<strong>Description: </strong>{{ read_type.description }}</br>
+		{% endfor %}
+		</br>
+		<strong>Add Read Type</strong>
+		<form action="read-types/add">
+		  Name:<br>
+		  <input type="text" name="name">
+		  <br>
+		  Description:<br>
+		  <input type="text" name="description">
+		  <br><br>
+		  <input type="submit" value="Submit">
+		</form> 
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h2>Plant</h2>
+        	<strong>Plant name: </strong>{{ plant.name }}</br>
+        	<strong>Owner: </strong>{{ plant.user.user_name }}</br>
+        	<strong>Planted on: </strong>{{ plant.ts_start }}</br>
+
+        	Take Reading
+        	<form action="/notebook/{{ plant.id }}/reading/add">
+			  Read Type:<br>
+			  <input type="text" name="read_type">
+			  <br>
+			  Value:<br>
+			  <input type="text" name="value">
+			  <br><br>
+			  <input type="submit" value="Submit">
+			</form> 
+            </br>
+	</body>
+</html>

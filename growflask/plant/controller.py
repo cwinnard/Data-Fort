@@ -31,7 +31,7 @@ def add_plant():
 @plantBP.route('/<int:plantId>/details')
 def plant_details(plantId):
     plant = Plant.query.get(plantId)
-    return render_template('plant_details.html', plant=plant)
+    return render_template('plant-details.html', plant=plant)
 
 @plantBP.route('/<int:plantId>/details-json')
 def plants_details_json(plantId):

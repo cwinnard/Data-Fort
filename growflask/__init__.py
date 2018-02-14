@@ -24,6 +24,8 @@ from growflask.dashboard.controller import dashboardBP
 app.register_blueprint(dashboardBP)
 from growflask.login.controller import loginBP
 app.register_blueprint(loginBP)
+from growflask.notebook.controller import notebookBP
+app.register_blueprint(notebookBP)
 from growflask.plant.controller import plantBP
 app.register_blueprint(plantBP)
 

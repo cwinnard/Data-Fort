@@ -6,7 +6,8 @@
         	<strong>Plant name: </strong>{{ plant.name }}</br>
         	<strong>Owner: </strong>{{ plant.user.user_name }}</br>
         	<strong>Planted on: </strong>{{ plant.ts_start }}</br>
-            </br>
+            <a href='/plant/{{ plant.id }}/details'>View Plant Details</a>
+            </br></br>
 		{% endfor %}
 
 		<h3>Add Plant</h3>

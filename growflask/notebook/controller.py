@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Blueprint, jsonify, render_template, request, url_for
+from flask import Blueprint, jsonify, redirect, render_template, request, url_for
 from flask_login import current_user
 
 from growflask import db
@@ -27,4 +27,4 @@ def take_reading(plantId):
     db.session.add(reading)
     db.session.commit()
 
-    return render_template('reading.html')
+    return redirect(url_for('plant.details', plantId=plantId))

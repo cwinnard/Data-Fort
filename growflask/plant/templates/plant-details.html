@@ -5,8 +5,16 @@
         	<strong>Plant name: </strong>{{ plant.name }}</br>
         	<strong>Owner: </strong>{{ plant.user.user_name }}</br>
         	<strong>Planted on: </strong>{{ plant.ts_start }}</br>
+            </br>
 
-        	Take Reading
+            <h2>Recent Readings</h2>
+				{% for reading in recent_readings %}
+		        	<strong>Read Type: </strong>{{ reading.read_type.name }}</br>
+		        	<strong>Value: </strong>{{ reading.value }}</br>
+		        	<strong>Taken on: </strong>{{ reading.date }}</br>
+				{% endfor %}
+			</br>
+        	<strong>Take Reading</strong>
         	<form action="/notebook/{{ plant.id }}/reading/add">
 			  Read Type:<br>
 			  <input type="text" name="read_type">

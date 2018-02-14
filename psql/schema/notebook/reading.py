@@ -18,3 +18,10 @@ class Reading(db.Model):
     id_taker = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
 
     read_type = db.relationship('ReadType', lazy='joined')
+
+    def serialize(self):
+        return {
+            'read_type': self.read_type.name, 
+            'value': self.value,
+            'date': self.date,
+        }

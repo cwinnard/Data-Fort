@@ -1,5 +1,7 @@
 from growflask import db
 
+from .read_type_category import ReadTypeCategory
+
 class ReadType(db.Model):
     """Represents the types of readings that can be taken """
 
@@ -9,9 +11,13 @@ class ReadType(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(128), nullable=False)
+    id_read_type_category = db.Column(db.Integer, db.ForeignKey(ReadTypeCategory.id), nullable=True)
+
+    category = db.relationship('ReadTypeCategory', lazy='joined')
 
     def serialize(self):
         return {
             'name': self.name, 
             'description': self.description,
+            'color': self.category.color,
         }

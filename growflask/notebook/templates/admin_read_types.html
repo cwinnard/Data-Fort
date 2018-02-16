@@ -4,6 +4,7 @@
 		{% for read_type in read_types %}
         	<strong>Name: </strong>{{ read_type.name }}</br>
         	<strong>Description: </strong>{{ read_type.description }}</br>
+        	<strong>Category: </strong>{{ read_type.category.name }}</br>
 		{% endfor %}
 		</br>
 		<strong>Add Read Type</strong>
@@ -13,6 +14,9 @@
 		  <br>
 		  Description:<br>
 		  <input type="text" name="description">
+		  <br>
+		  Category:<br>
+		  <input type="text" name="category"
 		  <br><br>
 		  <input type="submit" value="Submit">
 		</form> 

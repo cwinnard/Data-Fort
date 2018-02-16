@@ -40,10 +40,12 @@ def admin_read_types():
 def add_read_type():
     name = request.args.get('name')
     description = request.args.get('description')
+    category = request.args.get('category')
 
     read_type = ReadType()
     read_type.name = name
     read_type.description = description
+    read_type.id_read_type_category = category
 
     db.session.add(read_type)
     db.session.commit()

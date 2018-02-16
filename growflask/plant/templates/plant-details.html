@@ -9,7 +9,7 @@
 
             <h2>Recent Readings</h2>
 				{% for reading in plant.recent_readings %}
-		        	<strong>Read Type: </strong>{{ reading.read_type.name }}</br>
+		        	<span style="background-color: {{ reading.read_type.color  }}"><strong>Read Type: </strong>{{ reading.read_type.name }}</span></br>
 		        	<strong>Value: </strong>{{ reading.value }}</br>
 		        	<strong>Taken on: </strong>{{ reading.ts_reading_taken }}</br>
 				{% endfor %}

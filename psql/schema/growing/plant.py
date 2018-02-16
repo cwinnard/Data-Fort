@@ -25,7 +25,7 @@ class Plant(db.Model):
     @property
     def recent_readings(self):
         from psql.schema.notebook import Reading
-        return Reading.query.filter_by(id_plant=self.id).limit(5).all()
+        return Reading.query.filter_by(id_plant=self.id).order_by(db.desc(Reading.ts_reading_taken)).limit(5).all()
 
     def serialize(self):
         return {

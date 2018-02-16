@@ -23,7 +23,7 @@ def take_reading(plantId):
     reading.value = value
     reading.id_taker = 1
     reading.id_plant = plantId
-    reading.date = datetime.now()
+    reading.ts_reading_taken = datetime.now()
 
     db.session.add(reading)
     db.session.commit()

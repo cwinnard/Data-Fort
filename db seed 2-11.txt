@@ -30,7 +30,7 @@ description VARCHAR(100) NOT NULL
 CREATE TABLE notebook.reading (
 id SERIAL NOT NULL PRIMARY KEY,
 id_plant INT NOT NULL REFERENCES growing.plant(id),
-date TIMESTAMP NOT NULL,
+ts_reading_taken TIMESTAMP NOT NULL,
 id_read_type INT NOT NULL REFERENCES notebook.read_type(id),
 value VARCHAR(100) NOT NULL,
 id_taker INT NOT NULL REFERENCES master.user(id)

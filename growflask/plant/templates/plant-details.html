@@ -11,7 +11,7 @@
 				{% for reading in plant.recent_readings %}
 		        	<strong>Read Type: </strong>{{ reading.read_type.name }}</br>
 		        	<strong>Value: </strong>{{ reading.value }}</br>
-		        	<strong>Taken on: </strong>{{ reading.date }}</br>
+		        	<strong>Taken on: </strong>{{ reading.ts_reading_taken }}</br>
 				{% endfor %}
 			</br>
         	<strong>Take Reading</strong>

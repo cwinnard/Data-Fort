@@ -48,7 +48,7 @@ INSERT INTO master.user
 VALUES(DEFAULT, 'test_user', 'test', 'user', 'email@email.com', 'password');
 
 INSERT INTO notebook.read_type_category
-VALUES(DEFAULT, 'lighting', 'describes lightning stuff', 'yellow')
+VALUES(DEFAULT, 'lighting', 'describes lighting stuff', 'yellow')
 
 INSERT INTO notebook.read_type
 VALUES(DEFAULT, 'test_name', 'test_description', 1);

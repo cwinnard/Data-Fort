@@ -4,7 +4,6 @@ from flask import Blueprint, jsonify, redirect, render_template, request, url_fo
 
 from growflask import db
 
-from .plant_json_builder import PlantJsonBuilder
 from psql.schema.growing import Plant
 from psql.schema.notebook import Reading
 
@@ -33,12 +32,10 @@ def add_plant():
 @plantBP.route('/<int:plantId>/details')
 def details(plantId):
     plant = Plant.query.get(plantId)
-    recent_readings = Reading.query.filter_by(id_plant=plantId).all()
-    return render_template('plant-details.html', plant=plant, recent_readings=recent_readings)
+    return render_template('plant-details.html', plant=plant)
 
 @plantBP.route('/<int:plantId>/details-json')
 def details_json(plantId):
     plant = Plant.query.get(plantId)
-    recent_readings = Reading.query.filter_by(id_plant=plantId).all()
-    return PlantJsonBuilder.build(plant=plant, recent_readings=recent_readings)
+    return jsonify(plant=plant.serialize())
  

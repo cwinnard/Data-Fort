@@ -1,3 +1,4 @@
+from flask import jsonify
 from time import strftime
 
 from growflask import db
@@ -21,9 +22,15 @@ class Plant(db.Model):
     def plant_date(self):
         return self.ts_start.strftime('%b %d %Y')
 
+    @property
+    def recent_readings(self):
+        from psql.schema.notebook import Reading
+        return Reading.query.filter_by(id_plant=self.id).limit(5).all()
+
     def serialize(self):
         return {
             'name': self.name, 
             'owner': self.user.user_name,
             'planted_on': self.plant_date,
+            'recent_readings': [reading.serialize() for reading in self.recent_readings]
         }

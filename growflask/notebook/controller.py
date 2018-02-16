@@ -4,8 +4,7 @@ from flask_login import current_user
 
 from growflask import db
 from psql.schema.growing import Plant
-from psql.schema.notebook import Reading
-from psql.schema.notebook import ReadType
+from psql.schema.notebook import Reading, ReadType, ReadTypeCategory
 
 notebookBP = Blueprint('notebook', __name__, template_folder='templates', url_prefix='/notebook')
 
@@ -34,7 +33,7 @@ def take_reading(plantId):
 @notebookBP.route('/admin/read-types')
 def admin_read_types():
     read_types = ReadType.query.all()
-    return render_template('admin_read_types.html', read_types=read_types)
+    return render_template('admin-read-types.html', read_types=read_types)
 
 @notebookBP.route('/admin/read-types/add')
 def add_read_type():
@@ -51,3 +50,24 @@ def add_read_type():
     db.session.commit()
 
     return redirect(url_for('notebook.admin_read_types'))
+
+@notebookBP.route('/admin/read-type-categories')
+def admin_read_type_categories():
+    categories = ReadTypeCategory.query.all()
+    return render_template('admin-read-type-categories.html', categories=categories)
+
+@notebookBP.route('/admin/read-type-categories/add')
+def add_read_type_category():
+    name = request.args.get('name')
+    description = request.args.get('description')
+    color = request.args.get('color')
+
+    category = ReadTypeCategory()
+    category.name = name
+    category.description = description
+    category.color = color
+
+    db.session.add(category)
+    db.session.commit()
+
+    return redirect(url_for('notebook.admin_read_type_categories'))

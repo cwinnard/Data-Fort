@@ -2,6 +2,7 @@ from growflask import db
 
 from .read_type_category import ReadTypeCategory
 
+
 class ReadType(db.Model):
     """Represents the types of readings that can be taken """
 

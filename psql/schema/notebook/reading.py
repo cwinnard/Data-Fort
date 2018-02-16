@@ -4,6 +4,7 @@ from psql.schema.growing import Plant
 from psql.schema.master import User
 from .read_type import ReadType
 
+
 class Reading(db.Model):
     """Represents an entry in the notebook """
 

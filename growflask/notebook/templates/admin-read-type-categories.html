@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		{% for category in categories %}
+        	<strong>Name: </strong>{{ category.name }}</br>
+        	<strong>Description: </strong>{{ category.description }}</br>
+        	<strong>Color: </strong>{{ category.color }}</br>
+		{% endfor %}
+		</br>
+		<strong>Add Category</strong>
+		<form action="read-type-categories/add">
+		  Name:<br>
+		  <input type="text" name="name">
+		  <br>
+		  Description:<br>
+		  <input type="text" name="description">
+		  <br>
+		  Color:<br>
+		  <input type="text" name="color"
+		  <br><br>
+		  <input type="submit" value="Submit">
+		</form> 
+	</body>
+</html>

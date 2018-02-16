@@ -24,4 +24,5 @@ class Reading(db.Model):
             'read_type': self.read_type.name, 
             'value': self.value,
             'ts_reading_taken': self.ts_reading_taken,
+            'color': self.read_type.color,
         }

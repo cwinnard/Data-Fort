@@ -15,9 +15,13 @@ class ReadType(db.Model):
 
     category = db.relationship('ReadTypeCategory', lazy='joined')
 
+    @property
+    def color(self):
+    	return self.category.color
+
     def serialize(self):
         return {
             'name': self.name, 
             'description': self.description,
-            'color': self.category.color,
+            'color': self.color,
         }

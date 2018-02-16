@@ -28,12 +28,12 @@ description VARCHAR(100) NOT NULL,
 id_read_type_category INT REFERENCES notebook.read_type_category(id)
 );
 
-CREATE TABLE notebook.read_type_category {
+CREATE TABLE notebook.read_type_category (
 id SERIAL NOT NULL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,	
 description VARCHAR(100),
 color VARCHAR(100)
-};
+);
 
 CREATE TABLE notebook.reading (
 id SERIAL NOT NULL PRIMARY KEY,
@@ -43,6 +43,10 @@ id_read_type INT NOT NULL REFERENCES notebook.read_type(id),
 value VARCHAR(100) NOT NULL,
 id_taker INT NOT NULL REFERENCES master.user(id)
 );
+
+CREATE TABLE appendix.lighting (
+id SERIAL NOT NULL PRIMARY KEY
+)
 
 INSERT INTO master.user
 VALUES(DEFAULT, 'test_user', 'test', 'user', 'email@email.com', 'password');

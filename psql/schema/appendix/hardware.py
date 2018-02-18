@@ -1,4 +1,4 @@
-rom growflask import db
+from growflask import db
 
 from psql.schema.master import User
 

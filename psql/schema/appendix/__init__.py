@@ -1,1 +1,1 @@
-from .light_reference import LightReference
+from .hardware import Lighting

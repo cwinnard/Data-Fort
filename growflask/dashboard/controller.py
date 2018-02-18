@@ -14,10 +14,10 @@ def dashboard():
 
 @dashboardBP.route('/plants')
 def plants():
-    plants = Plant.query.filter_by(id_user=1).all()
+    plants = Plant.query.filter_by(id_user=current_user.id).all()
     return render_template('plants.html', plants=plants)
 
 @dashboardBP.route('/plants-json')
 def plants_json():
-    plants = Plant.query.filter_by(id_user=1).all()
+    plants = Plant.query.filter_by(id_user=current_user.id).all()
     return jsonify(plants=[plant.serialize() for plant in plants])

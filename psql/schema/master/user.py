@@ -19,7 +19,7 @@ class User(db.Model):
 
     #Needs to return unicode rather than int per flask login
     def get_id(self):
-        return char(self.id)
+        return self.id
 
     def is_active(self):
         return True

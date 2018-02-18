@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Blueprint, jsonify, redirect, render_template, request, url_for
-#from flask_login import current_user
+from flask_login import current_user
 
 from growflask import db
 
@@ -20,7 +20,7 @@ def add_plant():
     plant_date = datetime.strptime(planted_on, '%Y-%m-%dT%H:%M')
 
     plant = Plant()
-    plant.id_user = 1
+    plant.id_user = current_user.id
     plant.name = name
     plant.ts_start = plant_date
 

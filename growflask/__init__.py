@@ -5,6 +5,7 @@ from flask_login import login_manager
 import config
 
 app = Flask(__name__)
+app.secret_key = 'TOP SECRET KEY'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
@@ -16,7 +17,7 @@ loginManager = login_manager.LoginManager()
 from psql.schema.master import User
 @loginManager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    return User.query.get(user_id)
 
 loginManager.init_app(app)
 

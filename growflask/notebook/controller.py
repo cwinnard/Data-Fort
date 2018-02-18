@@ -20,7 +20,7 @@ def take_reading(plantId):
     reading = Reading()
     reading.id_read_type = int(read_type)
     reading.value = value
-    reading.id_taker = 1
+    reading.id_taker = current_user.id
     reading.id_plant = plantId
     reading.ts_reading_taken = datetime.now()
 

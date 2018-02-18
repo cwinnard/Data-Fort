@@ -50,7 +50,7 @@ id SERIAL NOT NULL PRIMARY KEY
 )
 
 INSERT INTO master.user
-VALUES(DEFAULT, 'test_user', 'test', 'user', 'email@email.com', 'password');
+VALUES(DEFAULT, 'test_user', 'test', 'user', 'email@email.com', 'password', DEFAULT);
 
 INSERT INTO notebook.read_type_category
 VALUES(DEFAULT, 'lighting', 'describes lighting stuff', 'yellow')

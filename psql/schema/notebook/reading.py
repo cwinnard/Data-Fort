@@ -20,10 +20,14 @@ class Reading(db.Model):
 
     read_type = db.relationship('ReadType', lazy='joined')
 
+    @property
+    def color(self):
+        return self.read_type.color
+
     def serialize(self):
         return {
             'read_type': self.read_type.name, 
             'value': self.value,
             'ts_reading_taken': self.ts_reading_taken,
-            'color': self.read_type.color,
+            'color': self.color,
         }

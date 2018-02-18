@@ -38,4 +38,8 @@ def details(plantId):
 def details_json(plantId):
     plant = Plant.query.get(plantId)
     return jsonify(plant=plant.serialize())
- 
+
+@plantBP.route('/<int:plantId>/readings/all-json')
+def all_readings_json(plantId):
+    readings = Reading.query.filter_by(id_plant=plantId).all()
+    return jsonify(readings=[reading.serialize() for reading in readings])

@@ -35,7 +35,7 @@ CREATE SCHEMA growing;
 CREATE TABLE growing.plant (
 id SERIAL NOT NULL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
-id_user INT NOT NULL REFERENCES master.user(id)
+id_user INT NOT NULL REFERENCES master.user(id),
 ts_start TIMESTAMP NOT NULL,
 ts_end TIMESTAMP
 );

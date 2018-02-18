@@ -1,5 +1,22 @@
 CREATE SCHEMA master;
 
+CREATE TABLE master.operation (
+id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE master.team (
+id SERIAL NOT NULL PIMARY KEY,
+name VARCHAR(100) NOT NULL,
+id_operation INT REFERENCES master.operation(id)
+)
+
+CREATE TABLE master.toolshed (
+id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+id_operation INT REFERENCES master.operation(id)
+)
+
 CREATE TABLE master.user (
 id SERIAL NOT NULL PRIMARY KEY,
 user_name VARCHAR(100) NOT NULL,
@@ -7,7 +24,10 @@ name_first VARCHAR(100) NOT NULL,
 name_last VARCHAR(100) NOT NULL,
 email VARCHAR(100) NOT NULL,
 password VARCHAR(100) NOT NULL,
-authenticated BOOLEAN DEFAULT False
+authenticated BOOLEAN DEFAULT False,
+id_operation INT REFERENCES master.operation(id),
+id_team INT REFERENCES master.team(id),
+id_toolshed INT REFERENCES master.toolshed(id)
 );
 
 CREATE SCHEMA growing;

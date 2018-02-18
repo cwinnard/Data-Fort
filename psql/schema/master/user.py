@@ -1,5 +1,9 @@
 from growflask import db
 
+from .operation import Operation
+from .team import Team
+from .toolshed import Toolshed
+
 
 class User(db.Model):
     """Represents a person"""
@@ -14,10 +18,13 @@ class User(db.Model):
     email = db.Column(db.String(128), nullable=False)
     password = db.Column(db.String(128), nullable=False)
     authenticated = db.Column(db.Boolean, default=False)
+    id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
+    id_team = db.Column(db.Integer, db.ForeignKey(Team.id), nullable=True)
+    id_toolshed = db.Column(db.Integer, db.ForeignKey(Toolshed.id), nullable=True)
 
     plants = db.relationship('Plant', backref='user', lazy='joined')
 
-    #Needs to return unicode rather than int per flask login
+    #????Needs to return unicode rather than int per flask login????
     def get_id(self):
         return self.id
 

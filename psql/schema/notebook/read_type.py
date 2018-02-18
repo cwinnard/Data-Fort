@@ -18,7 +18,7 @@ class ReadType(db.Model):
 
     @property
     def color(self):
-    	return self.category.color if self.category else None
+    	return self.category.color if self.category else 'transparent'
 
     def serialize(self):
         return {

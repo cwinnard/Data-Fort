@@ -11,12 +11,6 @@ name VARCHAR(100) NOT NULL,
 id_operation INT REFERENCES master.operation(id)
 )
 
-CREATE TABLE master.toolshed (
-id SERIAL NOT NULL PRIMARY KEY,
-name VARCHAR(100) NOT NULL,
-id_operation INT REFERENCES master.operation(id)
-)
-
 CREATE TABLE master.user (
 id SERIAL NOT NULL PRIMARY KEY,
 user_name VARCHAR(100) NOT NULL,
@@ -27,7 +21,7 @@ password VARCHAR(100) NOT NULL,
 authenticated BOOLEAN DEFAULT False,
 id_operation INT REFERENCES master.operation(id),
 id_team INT REFERENCES master.team(id),
-id_toolshed INT REFERENCES master.toolshed(id)
+id_toolshed INT REFERENCES toolshed.toolshed(id)
 );
 
 CREATE SCHEMA growing;
@@ -65,9 +59,29 @@ value VARCHAR(100) NOT NULL,
 id_taker INT NOT NULL REFERENCES master.user(id)
 );
 
+CREATE SCHEMA toolshed;
+
+CREATE TABLE toolshed.tool (
+id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+id_read_type INT NOT NULL REFERENCES notebook.read_type(id)
+);
+
+CREATE TABLE toolshed.toolshed (
+id SERIAL NOT NULL PRIMARY KEY,
+id_operation INT REFERENCES master.operation(id)
+);
+
+CREATE TABLE toolshed.toolshed_tool (
+id_toolshed INT NOT NULL REFERENCES toolshed.toolshed(id),
+id_tool INT NOT NULL REFERENCES toolshed.tool(id)
+);
+
+CREATE SCHEMA appendix;
+
 CREATE TABLE appendix.lighting (
 id SERIAL NOT NULL PRIMARY KEY
-)
+);
 
 INSERT INTO master.user
 VALUES(DEFAULT, 'test_user', 'test', 'user', 'email@email.com', 'password', DEFAULT);

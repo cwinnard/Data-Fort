@@ -2,7 +2,7 @@ from growflask import db
 
 from .operation import Operation
 from .team import Team
-from .toolshed import Toolshed
+from psql.schema.toolshed import Toolshed
 
 
 class User(db.Model):

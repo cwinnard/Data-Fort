@@ -1,11 +1,11 @@
 from growflask import db
-from .operation import Operation
+from psql.schema.master import Operation
 
 
 class Toolshed(db.Model):
-    """Represents a person"""
+    """Represents a collection of tools"""
 
-    __table_args__ = {'schema': 'master'}
+    __table_args__ = {'schema': 'toolshed'}
     __tablename__ = 'toolshed'
 
     id = db.Column(db.Integer, primary_key=True)

@@ -13,5 +13,12 @@ class Toolshed(db.Model):
     name = db.Column(db.String(128), nullable=False)
     id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
 
-    tools = db.relationship('Tool', secondary=toolshed_tool, lazy='subquery',
-        backref=db.backref('in_toolsheds', lazy=True))
+    operation = db.relationship('Operation')
+    tools = db.relationship('Tool', secondary=toolshed_tool, lazy='subquery', backref=db.backref('in_toolsheds', lazy=True))
+
+    def serialize(self):
+        return {
+            'name': self.name, 
+            'tools': [tool.serialize() for tool in self.tools],
+            'operation': self.operation.name if self.operation else None
+        }

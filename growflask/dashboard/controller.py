@@ -21,3 +21,13 @@ def plants():
 def plants_json():
     plants = Plant.query.filter_by(id_user=current_user.id).all()
     return jsonify(plants=[plant.serialize() for plant in plants])
+
+@dashboardBP.route('/toolshed')
+def toolshed():
+    toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()
+    return render_template('toolsheds.html', toolsheds=toolsheds)
+
+@dashboardBP.route('/toolshed-json')
+def toolsheds_json():
+    toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()
+    return jsonify(toolsheds=[toolshed.serialize() for toolshed in toolsheds])

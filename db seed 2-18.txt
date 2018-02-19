@@ -69,6 +69,7 @@ id_read_type INT NOT NULL REFERENCES notebook.read_type(id)
 
 CREATE TABLE toolshed.toolshed (
 id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
 id_operation INT REFERENCES master.operation(id)
 );
 

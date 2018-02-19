@@ -1,5 +1,6 @@
 from growflask import db
 from psql.schema.master import Operation
+from .toolshed_tool import toolshed_tool
 
 
 class Toolshed(db.Model):
@@ -11,3 +12,6 @@ class Toolshed(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
+
+    tools = db.relationship('Tool', secondary=toolshed_tool, lazy='subquery',
+        backref=db.backref('in_toolsheds', lazy=True))

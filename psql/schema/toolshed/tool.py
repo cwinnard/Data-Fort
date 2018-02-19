@@ -1,5 +1,7 @@
 from growflask import db
 
+from .toolshed_tool import toolshed_tool
+
 
 class Tool(db.Model):
     """Represents a tool used to take a reading on a plant """
@@ -13,3 +15,5 @@ class Tool(db.Model):
     id_read_type = db.Column(db.Integer, db.ForeignKey('read_type.id'), nullable=False)
 
     read_type = db.relationship('ReadType', lazy='joined')
+    toolsheds_in = db.relationship('Toolshed', secondary=toolshed_tool, lazy='subquery',
+        backref=db.backref('tools', lazy=True))

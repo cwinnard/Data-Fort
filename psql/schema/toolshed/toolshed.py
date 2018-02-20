@@ -14,7 +14,7 @@ class Toolshed(db.Model):
     id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
 
     operation = db.relationship('Operation')
-    tools = db.relationship('Tool', secondary=toolshed_tool, lazy='subquery', backref=db.backref('in_toolsheds', lazy=True))
+    tools = db.relationship('Tool', secondary=toolshed_tool, lazy='subquery', back_populates='tools')
 
     def serialize(self):
         return {

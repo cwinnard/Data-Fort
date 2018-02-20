@@ -12,10 +12,10 @@ class Tool(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     #Importing read_type as string instead of model to avoid circular import
-    id_read_type = db.Column(db.Integer, db.ForeignKey('read_type.id'), nullable=False)
+    id_read_type = db.Column(db.Integer, db.ForeignKey('notebook.read_type.id'), nullable=False)
 
     read_type = db.relationship('ReadType', lazy='joined')
-    toolsheds_in = db.relationship('Toolshed', secondary=toolshed_tool, lazy='subquery', backref=db.backref('tools', lazy=True))
+    toolsheds_in = db.relationship('Toolshed', secondary=toolshed_tool, lazy='subquery', back_populates='toolsheds_in')
 
     def serialize(self):
         return {

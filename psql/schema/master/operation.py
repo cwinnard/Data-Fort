@@ -10,5 +10,5 @@ class Operation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
 
-    teams = db.relationship('Team', backref='operation')
-    toolsheds = db.relationship('Toolshed', backref='operation')
+    #teams = db.relationship('Team', backref='operation')
+    #toolsheds = db.relationship('Toolshed', backref='operation')

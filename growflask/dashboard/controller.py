@@ -5,6 +5,7 @@ from flask_login import current_user
 from growflask import db
 from psql.schema.growing import Plant
 from psql.schema.notebook import Reading
+from psql.schema.toolshed import Toolshed
 
 dashboardBP = Blueprint('dashboard', __name__, template_folder='templates', url_prefix='/dashboard')
 

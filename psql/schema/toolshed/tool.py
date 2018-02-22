@@ -15,7 +15,7 @@ class Tool(db.Model):
     id_read_type = db.Column(db.Integer, db.ForeignKey('notebook.read_type.id'), nullable=False)
 
     read_type = db.relationship('ReadType', lazy='joined')
-    toolsheds_in = db.relationship('Toolshed', secondary=toolshed_tool, lazy='subquery', back_populates='toolsheds_in')
+    toolsheds_in = db.relationship('Toolshed', secondary=toolshed_tool, primaryjoin='toolshed_tool.id_tool' == id, lazy='subquery', back_populates='toolsheds_in')
 
     def serialize(self):
         return {

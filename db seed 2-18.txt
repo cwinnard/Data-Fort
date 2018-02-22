@@ -75,7 +75,8 @@ id_operation INT REFERENCES master.operation(id)
 
 CREATE TABLE toolshed.toolshed_tool (
 id_toolshed INT NOT NULL REFERENCES toolshed.toolshed(id),
-id_tool INT NOT NULL REFERENCES toolshed.tool(id)
+id_tool INT NOT NULL REFERENCES toolshed.tool(id),
+PRIMARY KEY(id_toolshed, id_tool)
 );
 
 CREATE SCHEMA appendix;

@@ -1,6 +1,6 @@
 from growflask import db
 
-from .toolshed_tool import toolshed_tool
+from .toolshed_tool import ToolshedTool
 
 
 class Tool(db.Model):
@@ -15,7 +15,7 @@ class Tool(db.Model):
     id_read_type = db.Column(db.Integer, db.ForeignKey('notebook.read_type.id'), nullable=False)
 
     read_type = db.relationship('ReadType', lazy='joined')
-    toolsheds_in = db.relationship('Toolshed', secondary=toolshed_tool, back_populates='toolsheds_in')
+    toolsheds_in = db.relationship('Toolshed', secondary=ToolshedTool.__table__)
 
     def serialize(self):
         return {

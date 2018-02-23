@@ -1,7 +1,12 @@
 from growflask import db
 
-metadata = db.MetaData(schema='toolshed')
 
-toolshed_tool = db.Table('toolshed_tool', metadata, \
-    db.Column('id_toolshed', db.Integer, db.ForeignKey('toolshed.id'), primary_key=True, nullable=False), \
-    db.Column('id_tool', db.Integer, db.ForeignKey('tool.id'), primary_key=True, nullable=False))
+class ToolshedTool(db.Model):
+    """Junction table between tool and toolshed """
+
+    __table_args__ = {'schema': 'toolshed'}
+    __tablename__ = 'toolshed_tool'
+
+    id = db.Column(db.Integer, primary_key=True)
+    id_tool = db.Column(db.Integer, db.ForeignKey('toolshed.tool.id'), primary_key=True)
+    id_toolshed = db.Column(db.String(128), db.ForeignKey('toolshed.toolshed.id'), primary_key=True)

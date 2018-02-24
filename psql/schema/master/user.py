@@ -18,9 +18,9 @@ class User(db.Model):
     email = db.Column(db.String(128), nullable=False)
     password = db.Column(db.String(128), nullable=False)
     authenticated = db.Column(db.Boolean, default=False)
-    id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
-    id_team = db.Column(db.Integer, db.ForeignKey(Team.id), nullable=True)
-    id_toolshed = db.Column(db.Integer, db.ForeignKey(Toolshed.id), nullable=True)
+    #id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
+    #id_team = db.Column(db.Integer, db.ForeignKey(Team.id), nullable=True)
+    #id_toolshed = db.Column(db.Integer, db.ForeignKey(Toolshed.id), nullable=True)
 
     plants = db.relationship('Plant', backref='user', lazy='joined')
 

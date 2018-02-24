@@ -40,7 +40,9 @@ CREATE TABLE notebook.read_type (
 id SERIAL NOT NULL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
 description VARCHAR(100) NOT NULL,
-id_read_type_category INT REFERENCES notebook.read_type_category(id)
+id_read_type_category INT REFERENCES notebook.read_type_category(id),
+target_value VARCHAR(100),
+frequency VARCHAR(100)
 );
 
 CREATE TABLE notebook.read_type_category (
@@ -56,7 +58,8 @@ id_plant INT NOT NULL REFERENCES growing.plant(id),
 ts_reading_taken TIMESTAMP NOT NULL,
 id_read_type INT NOT NULL REFERENCES notebook.read_type(id),
 value VARCHAR(100) NOT NULL,
-id_taker INT NOT NULL REFERENCES master.user(id)
+id_taker INT NOT NULL REFERENCES master.user(id),
+id_tool INT REFERENCES toolshed.tool(id)
 );
 
 CREATE SCHEMA toolshed;

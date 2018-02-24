@@ -25,7 +25,8 @@ def plants_json():
 
 @dashboardBP.route('/toolshed')
 def toolshed():
-    toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()
+    toolsheds = Toolshed.query.all()
+    #toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()
     return render_template('toolsheds.html', toolsheds=toolsheds)
 
 @dashboardBP.route('/toolshed-json')

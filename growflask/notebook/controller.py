@@ -16,6 +16,7 @@ def reading():
 def take_reading(plantId):
     read_type = request.args.get('read_type')
     value = request.args.get('value')
+    tool = request.args.get('tool')
 
     reading = Reading()
     reading.id_read_type = int(read_type)
@@ -23,6 +24,7 @@ def take_reading(plantId):
     reading.id_taker = current_user.id
     reading.id_plant = plantId
     reading.ts_reading_taken = datetime.now()
+    reading.id_tool = tool
 
     db.session.add(reading)
     db.session.commit()
@@ -40,11 +42,15 @@ def add_read_type():
     name = request.args.get('name')
     description = request.args.get('description')
     category = request.args.get('category')
+    target_value = request.args.get('target_value')
+    frequency = request.args.get('frequency')
 
     read_type = ReadType()
     read_type.name = name
     read_type.description = description
     read_type.id_read_type_category = category
+    read_type.target_value = target_value
+    read_type.frequency = frequency
 
     db.session.add(read_type)
     db.session.commit()

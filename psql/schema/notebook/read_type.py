@@ -13,6 +13,8 @@ class ReadType(db.Model):
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(128), nullable=False)
     id_read_type_category = db.Column(db.Integer, db.ForeignKey(ReadTypeCategory.id), nullable=True)
+    target_value = db.Column(db.String(128))
+    frequency = db.Column(db.String(128))
 
     category = db.relationship('ReadTypeCategory', lazy='joined')
 
@@ -25,4 +27,6 @@ class ReadType(db.Model):
             'name': self.name, 
             'description': self.description,
             'color': self.color,
+            'target_value': self.target_value,
+            'frequency': self.frequency
         }

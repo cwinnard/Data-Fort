@@ -18,7 +18,7 @@ class Reading(db.Model):
     id_read_type = db.Column(db.Integer, db.ForeignKey(ReadType.id), nullable=False)
     value = db.Column(db.String(128), nullable=False)
     id_taker = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
-    id_tool = db.Column(db.Integer, db.ForeignKey(Tool.id))
+    id_tool = db.Column(db.Integer, db.ForeignKey(Tool.id), nullable=False)
 
     read_type = db.relationship('ReadType', lazy='joined')
     tool = db.relationship('Tool', lazy='joined')
@@ -28,7 +28,7 @@ class Reading(db.Model):
         return self.read_type.color
 
     @property
-    def taken_with(self):
+    def tool_used(self):
         return self.tool.name if self.tool else None
 
     def serialize(self):
@@ -37,5 +37,5 @@ class Reading(db.Model):
             'value': self.value,
             'ts_reading_taken': self.ts_reading_taken,
             'color': self.color,
-            'tool': self.taken_with
+            'tool': self.tool_used
         }

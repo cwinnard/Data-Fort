@@ -12,6 +12,7 @@
 		        	<span style="background-color: {{ reading.read_type.color  }}"><strong>Read Type: </strong>{{ reading.read_type.name }}</span></br>
 		        	<strong>Value: </strong>{{ reading.value }}</br>
 		        	<strong>Taken on: </strong>{{ reading.ts_reading_taken }}</br>
+		        	<strong>Taken with: </strong>{{ reading.tool_used }}</br>
 				{% endfor %}
 			</br>
         	<strong>Take Reading</strong>
@@ -21,6 +22,9 @@
 			  <br>
 			  Value:<br>
 			  <input type="text" name="value">
+			  <br>
+			  Tool Used:<br>
+		      <input type="text" name="tool">
 			  <br><br>
 			  <input type="submit" value="Submit">
 			</form> 

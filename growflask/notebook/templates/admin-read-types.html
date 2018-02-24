@@ -5,6 +5,8 @@
         	<strong>Name: </strong>{{ read_type.name }}</br>
         	<strong>Description: </strong>{{ read_type.description }}</br>
         	<strong>Category: </strong>{{ read_type.category.name }}</br>
+        	<strong>Target Value: </strong>{{ read_type.target_value }}</br>
+        	<strong>Frequency: </strong>{{ read_type.frequency }}</br>
 		{% endfor %}
 		</br>
 		<strong>Add Read Type</strong>
@@ -16,7 +18,13 @@
 		  <input type="text" name="description">
 		  <br>
 		  Category:<br>
-		  <input type="text" name="category"
+		  <input type="text" name="category">
+		  <br>
+		  Target Value:<br>
+		  <input type="text" name="target_value">
+		  <br>
+		  Frequency:<br>
+		  <input type="text" name="frequency">
 		  <br><br>
 		  <input type="submit" value="Submit">
 		</form> 

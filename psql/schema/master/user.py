@@ -19,6 +19,7 @@ class User(db.Model):
     password = db.Column(db.String(128), nullable=False)
     authenticated = db.Column(db.Boolean, default=False)
 
+    operations = db.relationship('Team', secondary=UserOperation.__table__)
     plants = db.relationship('Plant', backref='user', lazy='joined')
     teams = db.relationship('Team', secondary=UserTeam.__table__)
 

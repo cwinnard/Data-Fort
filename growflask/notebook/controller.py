@@ -8,10 +8,6 @@ from psql.schema.notebook import Reading, ReadType, ReadTypeCategory
 
 notebookBP = Blueprint('notebook', __name__, template_folder='templates', url_prefix='/notebook')
 
-@notebookBP.route('/reading')
-def reading():
-    return render_template('reading.html')
-
 @notebookBP.route('/<int:plantId>/reading/add')
 def take_reading(plantId):
     read_type = request.args.get('read_type')

@@ -6,10 +6,10 @@ name VARCHAR(100) NOT NULL
 )
 
 CREATE TABLE master.team (
-id SERIAL NOT NULL PIMARY KEY,
+id SERIAL NOT NULL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
 id_operation INT REFERENCES master.operation(id)
-)
+);
 
 CREATE TABLE master.user (
 id SERIAL NOT NULL PRIMARY KEY,
@@ -18,10 +18,21 @@ name_first VARCHAR(100) NOT NULL,
 name_last VARCHAR(100) NOT NULL,
 email VARCHAR(100) NOT NULL,
 password VARCHAR(100) NOT NULL,
-authenticated BOOLEAN DEFAULT False,
-id_operation INT REFERENCES master.operation(id),
-id_team INT REFERENCES master.team(id),
-id_toolshed INT REFERENCES toolshed.toolshed(id)
+authenticated BOOLEAN DEFAULT False
+);
+
+CREATE TABLE master.user_operation (
+id SERIAL NOT NULL,
+id_user INT NOT NULL REFERENCES master.user(id),
+id_operation INT NOT NULL REFERENCES master.operation(id),
+PRIMARY KEY(id, id_user, id_operation)
+);
+
+CREATE TABLE master.user_team (
+id SERIAL NOT NULL,
+id_user INT NOT NULL REFERENCES master.user(id),
+id_team INT NOT NULL REFERENCES master.team(id),
+PRIMARY KEY(id, id_user, id_team)
 );
 
 CREATE SCHEMA growing;
@@ -74,6 +85,13 @@ CREATE TABLE toolshed.toolshed (
 id SERIAL NOT NULL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
 id_operation INT REFERENCES master.operation(id)
+);
+
+CREATE TABLE toolshed.team_toolshed (
+id SERIAL NOT NULL,
+id_team INT NOT NULL REFERENCES master.team(id),
+id_toolshed INT NOT NULL REFERENCES toolshed.toolshed(id),
+PRIMARY KEY(id, id_team, id_toolshed)
 );
 
 CREATE TABLE toolshed.toolshed_tool (

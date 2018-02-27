@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h2>My Toolsheds</h2>
+		{% for toolshed in toolsheds %}
+        	<strong>Toolshed name: </strong>{{ toolshed.name }}</br>
+                {% for tool in toolshed.tools %}
+                	<strong>Tool name: </strong>{{ tool.name }}</br>
+
+				{% endfor %}
+            </br></br>
+		{% endfor %}
+
+		<h3>Add Plant</h3>
+		<form action="/plant/add">
+		  Plant Name:<br>
+		  <input type="text" name="name">
+		  <br>
+		  Planted On:<br>
+		  <input type="datetime-local" name="planted_on">
+		  <br><br>
+		  <input type="submit" value="Submit">
+		</form> 
+	</body>
+</html>

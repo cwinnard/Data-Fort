@@ -1,8 +1,5 @@
 from growflask import db
 
-from .operation import Operation
-from .user_team import UserTeam
-
 
 class Team(db.Model):
     """Represents a person"""
@@ -12,6 +9,6 @@ class Team(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
-    id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
+    id_operation = db.Column(db.Integer, db.ForeignKey('master.operation.id'), nullable=True)
 
-    members = db.relationship('Team', secondary=UserTeam.__table__)
+    members = db.relationship('Team', secondary='master.user_team')

@@ -1,7 +1,7 @@
 from growflask import db
 
 
-class UserOperaion(db.Model):
+class UserOperation(db.Model):
     """Junction table between user and operation"""
 
     __table_args__ = {'schema': 'master'}

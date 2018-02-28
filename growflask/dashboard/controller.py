@@ -44,7 +44,7 @@ def toolshed_add_tool(toolshedId):
     tool = Tool()
     tool.name = name
     tool.read_type = read_type
-    tool.toolsheds_in.append(toolshedId)
+    tool.toolsheds_in.extend(toolshedId)
 
     db.session.add(tool)
     db.session.commit()

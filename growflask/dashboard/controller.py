@@ -13,24 +13,24 @@ dashboardBP = Blueprint('dashboard', __name__, template_folder='templates', url_
 def dashboard():
     return render_template('dashboard.html')
 
-@dashboardBP.route('/plants')
+@dashboardBP.route('/<username>/plants')
 def plants():
     plants = Plant.query.filter_by(id_user=current_user.id).all()
     return render_template('plants.html', plants=plants)
 
-@dashboardBP.route('/plants-json')
+@dashboardBP.route('<username>/plants-json')
 def plants_json():
     plants = Plant.query.filter_by(id_user=current_user.id).all()
     return jsonify(plants=[plant.serialize() for plant in plants])
 
 # NEED TO RESTIFY THESE ROUTES
-@dashboardBP.route('/toolshed')
+@dashboardBP.route('/toolsheds')
 def toolshed():
     toolsheds = Toolshed.query.all()
     #toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()
     return render_template('toolsheds.html', toolsheds=toolsheds)
 
-@dashboardBP.route('/toolshed-json')
+@dashboardBP.route('/toolsheds-json')
 def toolsheds_json():
     toolsheds = Toolshed.query.all()
     #toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()

@@ -29,6 +29,8 @@ from growflask.notebook.controller import notebookBP
 app.register_blueprint(notebookBP)
 from growflask.plant.controller import plantBP
 app.register_blueprint(plantBP)
+from growflask.toolshed.controller import toolshedBP
+app.register_blueprint(toolshedBP)
 
 @app.route('/')
 def index():

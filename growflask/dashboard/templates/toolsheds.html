@@ -7,6 +7,8 @@
                 {% for tool in toolshed.tools %}
                 	<strong>Tool name: </strong>{{ tool.name }}</br>
 				{% endfor %}
+			<a href="/toolshed/{{ toolshed.id }}">Toolshed Details</a>
+			<br><br>
 			<strong>Add Tool:</strong><br>
 			<form action="toolshed/{{ toolshed.id }}/add-tool">
 			  Tool Name:<br>

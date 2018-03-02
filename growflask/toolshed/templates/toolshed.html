@@ -7,7 +7,7 @@
             	<strong>Tool name: </strong>{{ tool.name }}</br>
 			{% endfor %}
 		<strong>Add Tool:</strong><br>
-		<form action="toolshed/{{ toolshed.id }}/add-tool">
+		<form action="{{ toolshed.id }}/add-tool">
 		  Tool Name:<br>
 		  <input type="text" name="name">
 		  <br>

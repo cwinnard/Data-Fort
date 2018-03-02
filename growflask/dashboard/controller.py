@@ -30,7 +30,7 @@ def toolshed(userId):
     return render_template('toolsheds.html', toolsheds=toolsheds)
 
 @dashboardBP.route('/<int:userId>/toolsheds-json')
-def toolsheds_json():
+def toolsheds_json(userId):
     toolsheds = Toolshed.query.all()
     #toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()
     return jsonify(toolsheds=[toolshed.serialize() for toolshed in toolsheds])

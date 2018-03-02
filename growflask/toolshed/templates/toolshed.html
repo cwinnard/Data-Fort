@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h2>My Toolsheds</h2>
+		{% for toolshed in toolsheds %}
+        	<strong>Toolshed name: </strong>{{ toolshed.name }}</br>
+                {% for tool in toolshed.tools %}
+                	<strong>Tool name: </strong>{{ tool.name }}</br>
+				{% endfor %}
+			<strong>Add Tool:</strong><br>
+			<form action="toolshed/{{ toolshed.id }}/add-tool">
+			  Tool Name:<br>
+			  <input type="text" name="name">
+			  <br>
+			  Read Type Taken:<br>
+			  <input type="text" name="read_type">
+			  <br><br>
+			  <input type="submit" value="Submit">
+			</form> 
+            </br></br>
+		{% endfor %}
+	</body>
+</html>

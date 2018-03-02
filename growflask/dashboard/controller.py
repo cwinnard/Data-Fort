@@ -13,31 +13,31 @@ dashboardBP = Blueprint('dashboard', __name__, template_folder='templates', url_
 def dashboard():
     return render_template('dashboard.html')
 
-@dashboardBP.route('/<username>/plants')
-def plants():
-    plants = Plant.query.filter_by(id_user=current_user.id).all()
+@dashboardBP.route('/<int:userId>/plants')
+def plants(userId):
+    plants = Plant.query.filter_by(id_user=userId).all()
     return render_template('plants.html', plants=plants)
 
-@dashboardBP.route('<username>/plants-json')
-def plants_json():
-    plants = Plant.query.filter_by(id_user=current_user.id).all()
+@dashboardBP.route('/<int:userId>/plants-json')
+def plants_json(userId):
+    plants = Plant.query.filter_by(id_user=userId).all()
     return jsonify(plants=[plant.serialize() for plant in plants])
 
 # NEED TO RESTIFY THESE ROUTES
-@dashboardBP.route('/toolsheds')
-def toolshed():
+@dashboardBP.route('/<int:userId>/toolsheds')
+def toolshed(userId):
     toolsheds = Toolshed.query.all()
-    #toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()
+    #toolsheds = Toolshed.query.filter_by(id_user=userId).all()
     return render_template('toolsheds.html', toolsheds=toolsheds)
 
-@dashboardBP.route('/toolsheds-json')
+@dashboardBP.route('/<int:userId>/toolsheds-json')
 def toolsheds_json():
     toolsheds = Toolshed.query.all()
     #toolsheds = Toolshed.query.filter_by(id_user=current_user.id).all()
     return jsonify(toolsheds=[toolshed.serialize() for toolshed in toolsheds])
 
-@dashboardBP.route('/toolshed/<int:toolshedId>/add-tool')
-def toolshed_add_tool(toolshedId):
+@dashboardBP.route('/<int:userId>/toolshed/<int:toolshedId>/add-tool')
+def toolshed_add_tool(userId, toolshedId):
     name = request.args.get('name')
     read_type_id = request.args.get('read_type')
 

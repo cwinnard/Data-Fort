@@ -1,9 +1,10 @@
-from datetime import datetime
+8from datetime import datetime
 from flask import Blueprint, jsonify, redirect, render_template, request, url_for
 from flask_login import current_user
 
 from growflask import db
 
+from .plant_photo_manager import PlantPhotoManager
 from psql.schema.growing import Plant
 from psql.schema.notebook import Reading
 
@@ -24,7 +25,7 @@ def add_plant():
     plant.name = name
     plant.ts_start = plant_date
 
-    db.session.add(plant)
+    db.session.add(plant)f
     db.session.commit()
 
     return redirect(url_for('dashboard.plants'))   
@@ -43,3 +44,9 @@ def details_json(plantId):
 def all_readings_json(plantId):
     readings = Reading.query.filter_by(id_plant=plantId).all()
     return jsonify(readings=[reading.serialize() for reading in readings])
+
+@plantBP.route('/<int:plantId>/photo/add')
+def add_photo(plantId):
+    photoManager = PlantPhotoManager()
+    photoManager.upload()
+    return None

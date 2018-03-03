@@ -45,6 +45,14 @@ ts_start TIMESTAMP NOT NULL,
 ts_end TIMESTAMP
 );
 
+CREATE TABLE growing.plant_photo (
+id SERIAL NOT NULL PRIMARY KEY,
+id_plant INT NOT NULL REFERENCES master.user(id),
+ts_uploaded TIMESTAMP NOT NULL,
+notes VARCHAR(100) NOT NULL,
+ts_deleted TIMESTAMP
+);
+
 CREATE SCHEMA notebook;
 
 CREATE TABLE notebook.read_type (

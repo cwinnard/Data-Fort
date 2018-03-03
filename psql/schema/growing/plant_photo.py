@@ -13,7 +13,7 @@ class PlantPhoto(db.Model):
     __tablename__ = 'plant_photo'
 
     id = db.Column(db.Integer, primary_key=True)
-    id_plant = db.Column(db.Integer, db.ForeignKey('psql.schema.plant_photo.id'), nullable=False)
+    id_plant = db.Column(db.Integer, db.ForeignKey('psql.schema.plant.id'), nullable=False)
     ts_uploaded = db.Column(db.DateTime(), nullable=False)
     notes = db.Column(db.String(128))
     ts_deleted = db.Column(db.DateTime())

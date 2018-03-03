@@ -3,8 +3,9 @@ project_name="Data-Fort"
 # get path
 path=$(pwd)
 # substring without path(not working)
-scripts="scripts/"
-project_path=${path%$scripts}
+scripts="scripts"
+# go one level up from the scripts directory(current dir)
+project_path=${path//$scripts/}
 # path to install virtualenv
 virtualenv_path="$project_path/env"
 # load depdenecies into variable

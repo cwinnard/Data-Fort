@@ -3,7 +3,7 @@ project_name="Data-Fort"
 # get path
 path=$(pwd)
 # substring without path(not working)
-scripts="scripts"
+scripts="/scripts"
 # go one level up from the scripts directory(current dir)
 project_path=${path//$scripts/}
 # path to install virtualenv
@@ -18,8 +18,8 @@ virtualenv $virtualenv_path
 . $virtualenv_path/Scripts/activate
 # install dependencies in new virtualenv
 pip install $deps
-echo "source /e/projects/Data-Fort/scripts/env/Scripts/activate" > activate.sh
+echo "source $virtualenv_path/Scripts/activate" > scripts/activate.sh
 clear
 echo "New virtualenv was installed at: $virtualenv_path"
 echo "Use \"source $virtualenv_path/Scripts/activate\" or"
-echo "\"$project_path/activate.sh\" to activate new virtualenv."
+echo "\"$path/activate.sh\" to activate new virtualenv."

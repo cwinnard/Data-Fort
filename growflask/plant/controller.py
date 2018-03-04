@@ -1,4 +1,4 @@
-8from datetime import datetime
+from datetime import datetime
 from flask import Blueprint, jsonify, redirect, render_template, request, url_for
 from flask_login import current_user
 
@@ -25,7 +25,7 @@ def add_plant():
     plant.name = name
     plant.ts_start = plant_date
 
-    db.session.add(plant)f
+    db.session.add(plant)
     db.session.commit()
 
     return redirect(url_for('dashboard.plants'))   

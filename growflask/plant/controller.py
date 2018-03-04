@@ -48,7 +48,7 @@ def all_readings_json(plantId):
 @plantBP.route('/<int:plantId>/photo')
 def get_photo(plantId):
     photoManager = PlantPhotoManager()
-    photoManager.get_photo(plantId)
+    photos = photoManager.get_photos(plantId)
     return None
 
 @plantBP.route('/<int:plantId>/photo/add')

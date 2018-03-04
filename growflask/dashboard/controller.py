@@ -22,7 +22,6 @@ def plants_json(userId):
     plants = Plant.query.filter_by(id_user=userId).all()
     return jsonify(plants=[plant.serialize() for plant in plants])
 
-# NEED TO RESTIFY THESE ROUTES
 @dashboardBP.route('/<int:userId>/toolsheds')
 def toolshed(userId):
     toolsheds = Toolshed.query.all()

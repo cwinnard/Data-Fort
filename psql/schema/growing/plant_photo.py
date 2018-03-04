@@ -1,5 +1,4 @@
 from flask import jsonify
-from time import strftime
 
 from growflask import db
 

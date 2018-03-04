@@ -14,7 +14,7 @@ plantBP = Blueprint('plant', __name__, template_folder='templates', url_prefix='
 def plant():
     return 'hello plant'
 
-@plantBP.route('/add')
+@plantBP.route('/add') 
 def add_plant():
     name = request.args.get('name')
     planted_on = request.args.get('planted_on')
@@ -44,6 +44,12 @@ def details_json(plantId):
 def all_readings_json(plantId):
     readings = Reading.query.filter_by(id_plant=plantId).all()
     return jsonify(readings=[reading.serialize() for reading in readings])
+
+@plantBP.route('/<int:plantId>/photo')
+def get_photo(plantId):
+    photoManager = PlantPhotoManager()
+    photoManager.get_photo(plantId)
+    return None
 
 @plantBP.route('/<int:plantId>/photo/add')
 def add_photo(plantId):

@@ -12,6 +12,11 @@ def toolshed(toolshedId):
     toolshed = Toolshed.query.get(toolshedId)
     return render_template('toolshed.html', toolshed=toolshed)
 
+@toolshedBP.route('/<int:toolshedId>-json')
+def toolshed_json(toolshedId):
+    toolshed = Toolshed.query.get(toolshedId)
+    return jsonify(toolshed=toolshed.serialize())
+
 @toolshedBP.route('/<int:toolshedId>/add-tool')
 def add_tool(toolshedId):
     name = request.args.get('name')

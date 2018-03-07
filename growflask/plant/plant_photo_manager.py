@@ -6,5 +6,5 @@ class PlantPhotoManager:
     def get_photos(plantId):
         pass
 
-    def get_photo(plantId, photoId):
+    def get_photo(photoId):
         pass

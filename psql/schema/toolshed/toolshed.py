@@ -15,7 +15,7 @@ class Toolshed(db.Model):
     id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
 
     tools = db.relationship('Tool', secondary=ToolshedTool.__table__)
-    teams = db.relationship('Team', secondary=TeamToolshed.__table__)
+    teams_used_by = db.relationship('Team', secondary=TeamToolshed.__table__)
 
     def serialize(self):
         return {

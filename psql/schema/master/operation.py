@@ -14,8 +14,8 @@ class Operation(db.Model):
     toolsheds = db.relationship('Toolshed', backref='operation')
 
     def serialize(self):
-    return {
-        'name': self.name, 
-        'teamNames': [team.name for team in self.teams],
-        'toolshedNames': [toolshed.name for toolshed in self.toolsheds]
-    }
+        return {
+            'name': self.name, 
+            'teamNames': [team.name for team in self.teams],
+            'toolshedNames': [toolshed.name for toolshed in self.toolsheds]
+        }

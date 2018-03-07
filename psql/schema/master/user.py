@@ -37,8 +37,8 @@ class User(db.Model):
         return False
 
     def serialize(self):
-    return {
-        'name': '{} {}'.format(self.name_first, self.name_last), 
-        'username': self.user_name,
-        'email': self.email
-    }
+        return {
+            'name': '{} {}'.format(self.name_first, self.name_last), 
+            'username': self.user_name,
+            'email': self.email
+        }

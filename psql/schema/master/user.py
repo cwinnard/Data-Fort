@@ -35,3 +35,10 @@ class User(db.Model):
 
     def is_anonymous(self):
         return False
+
+    def serialize(self):
+    return {
+        'name': '{} {}'.format(self.name_first, self.name_last), 
+        'username': self.user_name,
+        'email': self.email
+    }

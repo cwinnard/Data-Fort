@@ -1,5 +1,6 @@
 from growflask import db
 from psql.schema.master import Operation
+from .team_toolshed import TeamToolshed
 from .toolshed_tool import ToolshedTool
 
 
@@ -14,6 +15,7 @@ class Toolshed(db.Model):
     id_operation = db.Column(db.Integer, db.ForeignKey(Operation.id), nullable=True)
 
     tools = db.relationship('Tool', secondary=ToolshedTool.__table__)
+    teams = db.relationship('Team', secondary=TeamToolshed.__table__)
 
     def serialize(self):
         return {

@@ -27,9 +27,15 @@ class Grow(db.Model):
         from psql.schema.notebook import Reading
         return Reading.query.filter_by(id_plant=self.id).order_by(db.desc(Reading.ts_reading_taken)).limit(5).all()
 
+    @property
+    def count(Self):
+        return len(self.plants)
+
     def serialize(self):
         return {
             'name': self.name, 
             'planted_on': self.plant_date,
+            'phase': self.phase,
+            'count': self.count,
             'recent_readings': [reading.serialize() for reading in self.recent_readings]
         }

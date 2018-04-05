@@ -30,3 +30,9 @@ class ReadType(db.Model):
             'target_value': self.target_value,
             'frequency': self.frequency
         }
+
+    SOIL_PH = 1
+    SOIL_MOISTURE = 2
+    LIGHT = 3
+
+    PRESET_READ_TYPES = [SOIL_PH, SOIL_MOISTURE, LIGHT]

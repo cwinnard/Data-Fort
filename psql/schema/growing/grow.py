@@ -16,6 +16,8 @@ class Grow(db.Model):
     ts_end = db.Column(db.DateTime())
     phase = db.Column(db.String(128))
 
+    plants = db.relationship('Plant', backref='grow', lazy='joined')
+
     @property
     def plant_date(self):
         return self.ts_start.strftime('%b %d %Y')

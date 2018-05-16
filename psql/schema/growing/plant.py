@@ -3,6 +3,7 @@ from time import strftime
 
 from growflask import db
 
+from psql.schema.growing import Grow
 from psql.schema.master import User
 
 
@@ -16,7 +17,7 @@ class Plant(db.Model):
     name = db.Column(db.String(128), nullable=False)
     ts_start = db.Column(db.DateTime(), nullable=False)
     ts_end = db.Column(db.DateTime())
-    id_grow = db.Column(db.Integer, db.ForeignKey(User.id), nullable=True)
+    id_grow = db.Column(db.Integer, db.ForeignKey(Grow.id), nullable=True)
 
     @property
     def plant_date(self):

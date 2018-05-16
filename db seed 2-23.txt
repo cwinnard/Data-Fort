@@ -37,12 +37,21 @@ PRIMARY KEY(id, id_user, id_team)
 
 CREATE SCHEMA growing;
 
+CREATE TABLE growing.grow (
+id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+ts_start TIMESTAMP NOT NULL,
+ts_end TIMESTAMP,
+phase VARCHAR(100)
+);
+
 CREATE TABLE growing.plant (
 id SERIAL NOT NULL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
 id_user INT NOT NULL REFERENCES master.user(id),
 ts_start TIMESTAMP NOT NULL,
-ts_end TIMESTAMP
+ts_end TIMESTAMP,
+id_grow INT REFERENCES growing.grow(id)
 );
 
 CREATE TABLE growing.plant_photo (
@@ -123,8 +132,11 @@ VALUES(DEFAULT, 'lighting', 'describes lighting stuff', 'yellow')
 INSERT INTO notebook.read_type
 VALUES(DEFAULT, 'test_name', 'test_description', 1);
 
-INSERT INTO growing.plant
-VALUES(DEFAULT, '1', 'plant name 1', '2018-01-01 01:01:01');
+INSERT INTO growing.grow
+VALUES(DEFAULT, 'test', '2018-01-01 01:01:01', null, 'phase 1');
 
 INSERT INTO growing.plant
-VALUES(DEFAULT, '1', 'plant name 2', '2018-02-02 01:01:01');
+VALUES(DEFAULT, '1', 'plant name 1', '2018-01-01 01:01:01', null, 1);
+
+INSERT INTO growing.plant
+VALUES(DEFAULT, '1', 'plant name 2', '2018-02-02 01:01:01', null, 1);

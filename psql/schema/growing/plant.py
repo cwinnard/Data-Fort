@@ -15,6 +15,7 @@ class Plant(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
+    id_user = db.Column(db.Integer, db.ForeignKey(User.id), nullable=True)
     ts_start = db.Column(db.DateTime(), nullable=False)
     ts_end = db.Column(db.DateTime())
     id_grow = db.Column(db.Integer, db.ForeignKey(Grow.id), nullable=True)

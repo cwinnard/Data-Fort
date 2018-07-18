@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Facilities</h1>
+  <ul class = "list-group">
+  {% for facility in facilities %}
+    <li class="list-group-item"><a href="facilities/{{facility.fac_id}}">{{ facility.fac_id }}</a></li>
+    <li class="list-group-item">{{ facility.fac_name }}</li>
+    <li class="list-group-item">{{ facility.fac_addy }}</li>
+    <li class="list-group-item">{{ facility.fac_zip }}</li>
+    <li class="list-group-item">{{ facility.fac_city }}</li>
+    <li class="list-group-item">{{ facility.fac_state }}</li>
+    <li class="list-group-item">{{ facility.fac_country }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

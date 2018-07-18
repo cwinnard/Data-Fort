@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="jumbotron text-center">
+    <h1>Welcome to FitFort</hi>
+    <ul>
+      {% for us in User %}
+      <li>{{ us.f_name }}</li>
+      {% endfor %}
+    </ul>
+    <p class="lead">I'm nice.</p>
+  </div>
+{% endblock %}
